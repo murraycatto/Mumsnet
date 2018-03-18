@@ -6,6 +6,12 @@
 %p
   %b Description:
   = @product.description
+%p
+  %b Categories:
+  %ul
+    - @product.categories.each do |category|
+      %li
+        = category.name
 
 = link_to 'Edit', edit_product_path(@product)
 \|

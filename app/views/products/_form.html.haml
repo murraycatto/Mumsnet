@@ -5,12 +5,14 @@
       %ul
         - @product.errors.full_messages.each do |message|
           %li= message
-
   .field
     = f.label :title
     = f.text_field :title
   .field
     = f.label :description
     = f.text_area :description
+  .field
+    = f.label :category_ids, "Categories"
+    = f.collection_select(:category_ids, Category.all, :id, :name, {} , {multiple:true})
   .actions
     = f.submit 'Save'
