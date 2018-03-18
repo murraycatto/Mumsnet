@@ -9,9 +9,10 @@
   .form-group
     = f.label :name
     = f.text_field :name, class:"form-control"
-  .form-group
-    = f.label :product_ids, "Products"
-    = f.collection_select(:product_ids, Product.all, :id, :title, {} , {multiple:true, class:"form-control"})
+  - if Product.any?
+    .form-group
+      = f.label :product_ids, "Products"
+      = f.collection_select(:product_ids, Product.all, :id, :title, {} , {multiple:true, class:"form-control"})
   .form-group
     = f.submit 'Save', class:"btn btn-success float-right"
   .clearfix

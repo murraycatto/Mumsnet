@@ -6,12 +6,13 @@
     %p
       %b Name:
       = @category.name
-    - if @category.products
+    - if @category.products.any?
       %p
         %b Products:
         %ul
           - @category.products.each do |product|
             = link_to product.title, edit_admin_product_path(product), class:"text-muted"
+            %br
   .card-footer
     = link_to 'Edit', edit_admin_category_path(@category)
     \|

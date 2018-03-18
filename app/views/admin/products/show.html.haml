@@ -9,12 +9,13 @@
     %p
       %b Description:
       = @product.description
-    %p
-      %b Categories:
-      %ul
-        - @product.categories.each do |category|
-          = link_to category.name, edit_admin_category_path(category), class: "text-muted"
-          %br
+    - if @product.categories.any?
+      %p
+        %b Categories:
+        %ul
+          - @product.categories.each do |category|
+            = link_to category.name, edit_admin_category_path(category), class: "text-muted"
+            %br
   .card-footer
     = link_to 'Edit', edit_admin_product_path(@product)
     \|
