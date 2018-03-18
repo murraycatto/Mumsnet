@@ -17,9 +17,10 @@
     .clear-50
     .content.card-deck
       - @products.each do |product|
-        .card.mb-3.bg-light.mix{class:"#{product.cats}"}
+        .card.mb-3.mix{class:"#{product.cats}"}
           .card-header
-            = product.title
+            %h3
+              = product.title
           .card-body
             .card-text
               = product.description
