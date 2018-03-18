@@ -35,7 +35,7 @@ module Admin
 
     def destroy
       @product.destroy
-      redirect_to products_url, notice: 'Product was successfully destroyed.'
+      redirect_to admin_products_url, notice: 'Product was successfully destroyed.'
     end
 
   private

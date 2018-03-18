@@ -3,7 +3,7 @@
   .card-header
     %h1 Products
   %table.table
-    %thead.thead-dark
+    %thead
       %tr
         %th Title
         %th Description
@@ -20,4 +20,4 @@
             = link_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm"
 
   .card-footer
-    = link_to 'New Product', new_admin_product_path, class: "btn btn-success"
+    = link_to 'New Product', new_admin_product_path, class: "btn btn-success float-right"
