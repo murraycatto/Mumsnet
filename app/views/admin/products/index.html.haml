@@ -1,23 +1,23 @@
-%h1 Listing products
-
-%table
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th
-      %th
-      %th
-
-  %tbody
-    - @products.each do |product|
+.clear-100
+.card
+  .card-header
+    %h1 Products
+  %table.table
+    %thead.thead-dark
       %tr
-        %td= product.title
-        %td= product.description
-        %td= link_to 'Show', admin_product_path(product)
-        %td= link_to 'Edit', edit_admin_product_path(product)
-        %td= link_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }
+        %th Title
+        %th Description
+        %th Actions
 
-%br
+    %tbody
+      - @products.each do |product|
+        %tr
+          %td= product.title
+          %td= product.description
+          %td
+            = link_to 'Show', admin_product_path(product), class: "btn btn-secondary btn-sm"
+            = link_to 'Edit', edit_admin_product_path(product), class: "btn btn-secondary btn-sm"
+            = link_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm"
 
-= link_to 'New Product', new_admin_product_path
+  .card-footer
+    = link_to 'New Product', new_admin_product_path, class: "btn btn-success"

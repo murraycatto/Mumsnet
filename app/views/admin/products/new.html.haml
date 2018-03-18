@@ -1,5 +1,9 @@
-%h1 New product
-
-= render 'form'
-
-= link_to 'Back', admin_products_path
+.clear-100
+.card
+  .card-header
+    %h1
+      New Product
+  .card-body
+    = render 'form'
+  .card-footer
+    = link_to 'Back', admin_products_path

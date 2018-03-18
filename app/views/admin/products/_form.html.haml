@@ -1,18 +1,20 @@
 = form_for ["admin", @product] do |f|
   - if @product.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
-      %ul
-        - @product.errors.full_messages.each do |message|
-          %li= message
-  .field
+    .alert.alert-danger
+      %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+      - @product.errors.full_messages.each do |message|
+        = message
+        %br
+  .form-group
     = f.label :title
-    = f.text_field :title
-  .field
+    = f.text_field :title, class:"form-control"
+  .form-group
     = f.label :description
-    = f.text_area :description
-  .field
+    = f.text_area :description, class:"form-control"
+  .form-group
     = f.label :category_ids, "Categories"
-    = f.collection_select(:category_ids, Category.all, :id, :name, {} , {multiple:true})
-  .actions
-    = f.submit 'Save'
+    = f.collection_select(:category_ids, Category.all, :id, :name, {} , {multiple:true, class:"form-control"})
+  .form-group
+    = f.submit 'Save', class:"btn btn-success float-right"
+  .clearfix
