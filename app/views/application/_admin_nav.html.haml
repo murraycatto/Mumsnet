@@ -7,3 +7,6 @@
         = link_to "Products",admin_products_path, class:"nav-link"
       %li.nav-item{class:"#{active? admin_categories_path}"}
         = link_to "Categories",admin_categories_path, class:"nav-link"
+  %ul.navbar-nav.nav.justify-content-end
+    %li.nav-item
+      = link_to "Logout", destroy_user_session_path, class:"nav-link"
