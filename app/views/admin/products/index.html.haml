@@ -7,17 +7,17 @@
       %tr
         %th Title
         %th Description
+        %th Created At
         %th Actions
-
     %tbody
       - @products.each do |product|
         %tr
           %td= product.title
-          %td= product.description
+          %td= truncate product.description, length: 60
+          %td= product.created_at.strftime("%d %b %Y %H:%M")
           %td
             = link_to 'Show', admin_product_path(product), class: "btn btn-secondary btn-sm"
             = link_to 'Edit', edit_admin_product_path(product), class: "btn btn-secondary btn-sm"
             = link_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm"
-
   .card-footer
     = link_to 'New Product', new_admin_product_path, class: "btn btn-success float-right"

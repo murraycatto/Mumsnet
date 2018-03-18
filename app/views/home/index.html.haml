@@ -1,0 +1,33 @@
+.container
+  .clear-50
+  .jumbotron
+    %h1.display-4
+      Welcome to my Demo
+    %p.lead
+
+      %br
+      Please view the below filter:
+    %hr
+    .controls
+      .clear-10
+      .control.btn.btn-{"data-filter" => "all", :type => "button"} All
+      - @categories.each do |category|
+        .control.btn.btn-{"data-filter" => ".cat-#{category.id}", :type => "button"}
+          = category.name
+    .clear-50
+    .content.card-deck
+      - @products.each do |product|
+        .card.mb-3.bg-light.mix{class:"#{product.cats}"}
+          .card-header
+            = product.title
+          .card-body
+            .card-text
+              = product.description
+          .card-footer
+            .text-muted
+              Created:
+              = time_ago_in_words(product.created_at)
+  .text-muted
+    If you are an admin please visit the admin portal
+    = link_to "here", admin_root_path
+  .clear-10
