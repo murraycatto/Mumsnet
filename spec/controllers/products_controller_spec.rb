@@ -4,12 +4,15 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
   before(:each) do
     @product =  FactoryBot.create(:product)
+    @category =  FactoryBot.create(:category)
+    @product.product_categories.create(category_id:@category.id)
   end
 
   let(:valid_attributes) {
     {
       title:"Test Title",
-      description:"Test Description"
+      description:"Test Description",
+      category_ids:[@category.id]
      }
   }
 
@@ -23,33 +26,37 @@ RSpec.describe Admin::ProductsController, type: :controller do
   login_user
 
   describe "GET #index" do
-    it "assigns products" do
+    it "assigns products and renders index" do
       get :index
       expect(assigns(:products)).to eq(Product.all)
+      expect(response).to render_template(:index)
       expect(response).to be_success
     end
   end
 
   describe "GET #show" do
-    it "assigns the product" do
+    it "assigns the product and renders show" do
       get :show, params: {id: @product.id}
       expect(assigns(:product)).to eq(@product)
+      expect(response).to render_template(:show)
       expect(response).to be_success
     end
   end
 
   describe "GET #new" do
-    it "assigns a product" do
+    it "assigns a product and renders new" do
       get :new
       expect(assigns(:product)).to be_a_new(Product)
+      expect(response).to render_template(:new)
       expect(response).to be_success
     end
   end
 
   describe "GET #edit" do
-    it "assigns the product" do
+    it "assigns the product and renders edit" do
       get :edit, params: {id: @product.id}
       expect(assigns(:product)).to eq(@product)
+      expect(response).to render_template(:edit)
       expect(response).to be_success
     end
   end
@@ -64,6 +71,7 @@ RSpec.describe Admin::ProductsController, type: :controller do
 
       it "redirects to the created product" do
         post :create, params:{product: valid_attributes}
+        expect(assigns(:product).categories.last).to eq(@category)
         expect(response).to redirect_to(admin_product_path(Product.last))
       end
     end

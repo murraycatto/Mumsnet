@@ -9,10 +9,8 @@ FactoryBot.define do
     description  "Test Description"
   end
 
-  factory :invalid_product, class: Product do
-    title ""
-    description  ""
+  factory :category do
+    name "Test Category"
   end
-
 
 end
