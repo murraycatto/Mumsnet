@@ -5,7 +5,6 @@ RSpec.describe Admin::ProductsController, type: :controller do
   before(:each) do
     @product =  FactoryBot.create(:product)
     @category =  FactoryBot.create(:category)
-    @product.product_categories.create(category_id:@category.id)
   end
 
   let(:valid_attributes) {
