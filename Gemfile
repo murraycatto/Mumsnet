@@ -52,6 +52,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'rails-controller-testing'
   gem 'factory_bot'
+  gem 'shoulda-matchers'
 end
 
 group :development do
