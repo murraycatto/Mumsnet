@@ -1,24 +1,24 @@
-# README
+# Mumsnet Readme
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### System Requirements
+* Postgres
+* Ruby 2.2.2 or newer
 
-Things you may want to cover:
+### Setup
 
-* Ruby version
+`bundle install`
 
-* System dependencies
+`rake db:create`
 
-* Configuration
+`rake db:migrate`
 
-* Database creation
+`rake db:seed`
 
-* Database initialization
+### Testing 
 
-* How to run the test suite
+If you are editing the tests I suggest using guard 
+`guard`
 
-* Services (job queues, cache servers, search engines, etc.)
+To run all tests 
+`bundle exec rspec`
 
-* Deployment instructions
-
-* ...
