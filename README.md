@@ -6,6 +6,10 @@
 
 ### Setup
 
+`git clone https://github.com/murraycatto/Mumsnet.git`
+
+`cd Mumsnet`
+
 `bundle install`
 
 `rake db:create`
